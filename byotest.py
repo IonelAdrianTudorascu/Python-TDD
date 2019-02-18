@@ -10,6 +10,12 @@ def test_is_in(collection, item):
 def test_between(upper_limit, lower_limit, actual):
     assert lower_limit <= actual <= upper_limit, "{0} is not between {1} and {2}".format(actual, lower_limit, upper_limit) 
 
+def test_exception_was_raised(func, args, message):
+    try:
+        func(*args)
+        assert False, "Exception was not raised"
+    except Exception as e:
+         assert e.args[0] == message, "The message that was provided did not match the message thrown"
 # for fail test_are_equal dunction use this line 
 # test_are_equal(number_of_evens([1,2,3,4,5]), 2)    
 
